@@ -1,0 +1,179 @@
+#+title: Tegn med løkker
+#+options: ^:{}
+
+Formålet med denne opgaver er, at I skal blive fortrolige med anvendelsen af ~for~-løkker for sig selv og ~for~-løkker inden i hinanden. Produktkravet til opgaven er, at I skal kunne producere følgende figur ved hjælp af 2 ~for~-løkker inden i hinanden, samt ~modulus~-operatoren.
+
+#+attr_org: :width 600
+[[./img/facit.png]]
+
+For overskuelighedens skyld nummereres de 8 felter på følgende måde:
+
+#+attr_org: :width 600
+[[./img/facit_med_tal.png]]
+
+I skal *ikke* indsætte tallene i jeres program.
+
+* Opstart
+I skal anvende filen =Opgave_05.py= til at skrive jeres kode i. Filen er allerede udfyldt med følgende kode:
+
+#+begin_src python :exports both :results output :eval never-export
+import arcade
+
+def optegn_felter():
+    """ Denne funktion tegner de 8 felter op, som I skal udfylde. """
+    # Tegner de nederste 4 felter 
+    arcade.draw_rectangle_outline(150, 150, 300, 300, arcade.color.BLACK)
+    arcade.draw_rectangle_outline(450, 150, 300, 300, arcade.color.BLACK)
+    arcade.draw_rectangle_outline(750, 150, 300, 300, arcade.color.BLACK)
+    arcade.draw_rectangle_outline(1050, 150, 300, 300, arcade.color.BLACK)
+
+    # Tegner de øverste 4 felter
+    arcade.draw_rectangle_outline(150, 450, 300, 300, arcade.color.BLACK)
+    arcade.draw_rectangle_outline(450, 450, 300, 300, arcade.color.BLACK)
+    arcade.draw_rectangle_outline(750, 450, 300, 300, arcade.color.BLACK)
+    arcade.draw_rectangle_outline(1050, 450, 300, 300, arcade.color.BLACK)
+
+
+def tegn_felt_1():
+    for raekke in range(30):
+        for soejle in range(30):
+            x = 0  # I stedet for nul, beregn den korrekt x-lokation ud fra soejle
+            y = 0  # I stedet for nul, beregn den korrekt y-lokation ud fra raekke
+            arcade.draw_rectangle_filled(x, y, 5, 5, arcade.color.WHITE)
+
+
+def tegn_felt_2():
+    # Udskift "pass" med jeres egen kode til for-loopet.
+    # Brug modulusoperatoren "%" sammen med et if-statement til at vaelge farven.
+    # Undlad at loope fra 30 til 60 for at flytte det hele over. I skal bare laegge 300 til x.
+    pass
+
+
+def tegn_felt_3():
+    # Brug modulusoperatoren (%) og et if (måske if/else) statement til at vælge farve med
+    # Undlad at bruge flere if-statements.
+    pass
+
+
+def tegn_felt_4():
+    # Brug modulusoperatoren og kun et if-statement til at vælge farven.
+    pass
+
+
+def tegn_felt_5():
+    # Brug IKKE if-statements til felt 5-8. Ændrer i stedet i løkkerne. 
+    pass
+
+
+def tegn_felt_6():
+    pass
+
+
+def tegn_felt_7():
+    pass
+
+
+def tegn_felt_8():
+    pass
+
+
+def main():
+    # Danner et vindue
+    arcade.open_window(1200, 600, "Opgave 5 - Tegn med løkker")
+    arcade.set_background_color(arcade.color.AIR_FORCE_BLUE)
+
+    arcade.start_render()
+
+    # Tegner omridset af felterne
+    optegn_felter()
+
+    # Tegn felterne
+    tegn_felt_1()
+    tegn_felt_2()
+    tegn_felt_3()
+    tegn_felt_4()
+    tegn_felt_5()
+    tegn_felt_6()
+    tegn_felt_7()
+    tegn_felt_8()
+
+    arcade.finish_render()
+
+    arcade.run()
+
+
+main()
+#+end_src
+
+Kommentarerne i selve koden skulle gerne være nok til, at I kan komme i gang med opgaven. Der er vejledning til delopgave 1-5, mens I må stå på egne ben i delopgave 6-8.
+
+* Forklaring og hints
+- Hver kvadrat er 5x5 pixel.
+- Hvis centrummet af hver kvadrat er adskilt 5 pixel, så vil man ikke kunne se kanten mellem hver lille kvadrat men kun en stor kvadrat.
+- Husk at, ~raekker~ styrer op og ned, altså y i koordinatsystemet, mens ~soejler~ styrer højre og venstre, altså x i koordinatsystemet.
+- Hver af de 8 felter er 300x300 pixel.
+- Når I skal arbejde med f.eks felt nummer 2, kan I lades som om, at feltet er felt 1, og så bare lægge 300 til x-værdierne. Det er nemmere at aflæse, end hvis I skriver de 300 direkte ind i koordinaterne. Det samme gør sig selvfølgelig gældende for de felter både hvad angår x- og y-koordinater.
+- I kan klare jer med kun 2 for-løkker inden i hinanden. Undgå at bruge flere løkker end det pr felt.
+- Felt nummer 4 behøver kun ét if statement. Tricket er at anvende ~and~ smart.
+- Modulusoperatoren, ~%~, beregner resten i en brøk. Se følgende:
+  #+begin_example
+  0 % 4 = 0
+  1 % 4 = 1
+  2 % 4 = 2
+  3 % 4 = 3
+  4 % 4 = 0
+  5 % 4 = 1
+  6 % 4 = 2
+  7 % 4 = 3
+  8 % 4 = 0
+  #+end_example
+
+  Forestil jer et divisionsstykke(en brøk). Hvis det går lige op er modulus 0 (det går op) eller returneres resten. F.eks 7 / 4. Her går 4 op i 7 én gang, men tilbage er 3. Dette 3, er hvad modulus returnere.
+
+- Man kan tælle opad
+#+begin_src python :exports both :results output :eval never-export
+for i in range(10):
+    print(i)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+#+end_example
+  
+- Eller man kan tælle nedad, selvom i vokser
+#+begin_src python :exports both :results output :eval never-export
+for i in range(10):
+    x = 9 - i
+    print(f"i er {i}, mens 9 - i er {x}.")
+#+end_src
+
+#+RESULTS:
+#+begin_example
+i er 0, mens 9 - i er 9.
+i er 1, mens 9 - i er 8.
+i er 2, mens 9 - i er 7.
+i er 3, mens 9 - i er 6.
+i er 4, mens 9 - i er 5.
+i er 5, mens 9 - i er 4.
+i er 6, mens 9 - i er 3.
+i er 7, mens 9 - i er 2.
+i er 8, mens 9 - i er 1.
+i er 9, mens 9 - i er 0.
+#+end_example
+
+  
+God fornøjelse med løkkerne!
+
+#+attr_html: :width 400
+#+attr_org: :width 400
+[[./img/perfect_loop.gif]]
