@@ -108,10 +108,10 @@ main()
 Kommentarerne i selve koden skulle gerne være nok til, at I kan komme i gang med opgaven. Der er vejledning til delopgave 1-5, mens I må stå på egne ben i delopgave 6-8.
 
 * Forklaring og hints
-- Hver kvadrat er 5x5 pixel.
+- Hvert kvadrat er 5x5 pixel.
 - Hvis centrummet af hver kvadrat er adskilt 5 pixel, så vil man ikke kunne se kanten mellem hver lille kvadrat men kun en stor kvadrat.
 - Husk at, ~raekker~ styrer op og ned, altså y i koordinatsystemet, mens ~soejler~ styrer højre og venstre, altså x i koordinatsystemet.
-- Hver af de 8 felter er 300x300 pixel.
+- Hvert af de 8 felter er 300x300 pixel.
 - Når I skal arbejde med f.eks felt nummer 2, kan I lades som om, at feltet er felt 1, og så bare lægge 300 til x-værdierne. Det er nemmere at aflæse, end hvis I skriver de 300 direkte ind i koordinaterne. Det samme gør sig selvfølgelig gældende for de felter både hvad angår x- og y-koordinater.
 - I kan klare jer med kun 2 for-løkker inden i hinanden. Undgå at bruge flere løkker end det pr felt.
 - Felt nummer 4 behøver kun ét if statement. Tricket er at anvende ~and~ smart.
